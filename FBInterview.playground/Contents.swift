@@ -4,24 +4,30 @@ import UIKit
 
 var str = "Hello, playground"
 
-let input:[Any] = [1,[4,3],6,[5,[1,0]]]
+let inputValue:[Any] = [1,[4,3],6,[5,[1,0]]]
+inputValue
 
 
-func next(input:[Any]) -> [Int] {
-    for each in input {
-        if let a = each as? Int {
-            return [a]
-        } else {
-            next(input: )
-        }
+
+func next(input:[Any]) ->[Int] {
+    var inputArray = input
+    if inputArray.count == 0 {
+        return [Int]()
     }
+    
+    if let eachElement = inputArray.first as? Int {
+        return [eachElement]
+    }
+    inputArray.removeFirst()
+    
+    return NSMutableArray().addingObjects(from: next(input: inputArray)) as! [Int]
 }
 
-for each in input {
-    var ouput:[Any] = [Any]()
-    if let a = each as? Int {
-        each a
-    }
-}
+let c = next(input: inputValue)
+c.count
+
+
+
+
 
 

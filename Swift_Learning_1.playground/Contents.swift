@@ -55,7 +55,7 @@ func performOperation(operation: (String,String) -> String) {
     let myStrings = ["Happy", "New Year"]
     
     if(myStrings.count >= 2) {
-        var resultString = operation(myStrings[0],myStrings[1]);
+        let resultString = operation(myStrings[0],myStrings[1]);
         print("\(resultString)")
     }
 }
@@ -66,12 +66,12 @@ func joinStringFunc(str1:String,str2:String) -> String {
     return "\(str1) <-> \(str2)"
 }
 
-performOperation(joinStringFunc)
+performOperation(operation: joinStringFunc)
 
 
 //apply 1
 //define the closure in line
-performOperation( {(str1:String, str2: String) -> String in return "\(str1.uppercaseString) 😁 \(str2.uppercaseString)"})
+performOperation( operation: {(str1:String, str2: String) -> String in return "\(str1.uppercased()) 😁 \(str2.uppercased())"})
 
 //apply 2
 //trailing closure -> last argument / only argument -> can put it outside of the function
@@ -80,18 +80,18 @@ performOperation() { "\($0) 😁 \($1)"}
 //apply 3 
 //trailing closure
 performOperation { (str1:String, str2: String) -> String in
-    return "\(str1.uppercaseString) 😁 \(str2.uppercaseString)"
+    return "\(str1.uppercased()) 😁 \(str2.uppercased())"
 }
 
 //apply 4
 //no return -> type inference as the function type return string as it's output ->
 performOperation { (str1:String, str2: String) -> String in
-    "\(str1.uppercaseString) 😁 \(str2.uppercaseString)"
+    "\(str1.uppercased()) 😁 \(str2.uppercased())"
 }
 
 //apply 5
 //type inference -> perforOperation which take a function type (a function takes two string input and return a string output) as it's argument
-performOperation() {str1, str2 in "\(str1.uppercaseString) 😁 \(str2.uppercaseString)"}
+performOperation() {str1, str2 in "\(str1.uppercased()) 😁 \(str2.uppercased())"}
 
 
 
@@ -103,7 +103,7 @@ performOperation() {str1, str2 in "\(str1.uppercaseString) 😁 \(str2.uppercase
 //}
 
 //NSNumber 
-let n = NSNumber(double: 12.5)
+let n = NSNumber(value: 12.5)
 let intValue = n.intValue;
 let floatValue = n.floatValue;
 
